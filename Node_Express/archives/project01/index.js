@@ -14,26 +14,33 @@ const persona = fileSync.readFileSync('./templates/persona.html', 'utf-8')
 const replaceTemplate = (temp, persona) => {
     let output = temp.replace(/{%NAME%}/g, persona.name)
     output = output.replace(/{%EMAIL%}/g, persona.email)
+    output = output.replace(/{%VALUE%}/g, persona.value)
+    output = output.replace(/{%DESCRIPTION%}/g, persona.description)
+    output = output.replace(/{%ID%}/g, persona.id)
     return output
 }
 
 const server = http.createServer((request, response) => {
-    const pathName = request.url
+    const{ query, pathname } = url.parse(request.url, true)
 
-    if (pathName === '/' || pathName === '/home') {
+    if (pathname === '/' || pathname === '/home') {
         response.writeHead(200, { 'Content-type': 'text/html' })
         response.end(index)
     }
-    else if (pathName === '/about') {
+    else if (pathname === '/about') {
         response.end('About page')
     }
-    else if (pathName === '/team') {
+    else if (pathname === '/team') {
         const cards = teamDataObj.map(e => 
             replaceTemplate(teamCard, e)
         ).join('')
-
         const output = team.replace('{%TEAM%}', cards)
-
+        response.writeHead(200, { 'Content-type': 'text/html' })
+        response.end(output)
+    }
+    else if (pathname === '/persona') {
+        const personaId = teamDataObj[query.id - 1]
+        const output = replaceTemplate(persona, personaId)
         response.writeHead(200, { 'Content-type': 'text/html' })
         response.end(output)
     }

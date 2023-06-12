@@ -3,18 +3,24 @@
         "id": 1,
         "name": "Josh", 
         "age": 34,
-        "email": "joshua@email.dom"
+        "email": "joshua@email.dom",
+        "description": "Photo editor",
+        "value": 99.98
     },
     {
         "id": 2,
         "name": "Noah",
         "age": 36,
-        "email": "nNnoOoah@email.dom"
+        "email": "nNnoOoah@email.dom",
+        "description": "Freelancer",
+        "value": 120.00
     },
     {
         "id": 3,
         "name": "Luca",
-        "age": 13,
-        "email": "Envy@email.dom"
+        "age": 23,
+        "email": "Envy@email.dom",
+        "description": "Work on eletronic projects",
+        "value": 349.99
     }
 ]

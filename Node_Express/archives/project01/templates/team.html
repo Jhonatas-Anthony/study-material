@@ -5,13 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        div>div{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            padding: 20px;
+        }
+        div>div>div{
+            border: 2px solid black;
+        }
+    </style>
 </head>
 <body>
+    <h1>Our Team</h1>
     <div>
-        <h1>Our Team</h1>
         <div> 
             {%TEAM%}
         </div>
     </div>
+    <a href="home">Voltar</a>
 </body>
 </html>
